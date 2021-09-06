@@ -8,11 +8,9 @@ const auth = async (req, res, next) => {
         const user = await User.findById({ _id: userId._id })//, "tokens.token": token
         req.token=token
         req.user = user
-    } catch (err) {
-        res.status(401).json({ error: err })
-    }
-    finally {
         next()
+    } catch (err) {
+        return res.status(401).json({ error: err })
     }
 }
 

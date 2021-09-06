@@ -5,7 +5,6 @@ const auth = require('../middleware/auth.js')
 const taskRoute = express.Router()
 
 taskRoute.post('/', auth, async (req, res) => {
-    debugger
     const task = new Task({ ...req.body, owner: req.user._id })
     try {
         await task.save()
